@@ -1,0 +1,116 @@
+Web Api Consmuing
+
+Home Controller in side
+All Method Implememt GetUseR,Crate ,Update,delete ,details
+
+
+
+Public  Async  Task<IActionResult> Index()// View Index list
+{
+list<User> Userregistration = new List<User>();
+HttpClinent clinet - new HttpClient();
+client.BaseAddress = new Uri(" base address api url");
+HttpResponseMessage response =  awit clinent.GetAsync(" api/User");
+if(respons.IsSuccessStatusCode)
+{
+var result = response.content.ReadAsStringAsync().Result;
+User=JsonConvert.Deserilationobject<Lis<User>>(ressult); // JsonBear Package install
+}
+Return View(User);
+}
+ 
+
+
+Public  Async  Task<IActionResult> details(int id)// View detials
+{
+User Userregistration = new User();
+HttpClinent clinet - new HttpClient();
+client.BaseAddress = new Uri(" base address api url");
+HttpResponseMessage response =  awit clinent.GetAsync($" api/User{id}");
+if(respons.IsSuccessStatusCode)
+{
+var result = response.content.ReadAsStringAsync().Result;
+User=JsonConvert.DeserilationObject<User>(ressult); // JsonBear Package install
+}
+Return View(User);
+}
+
+[HttpGet]
+Public  static Async  Task<IActionResult> GetUserbyId(int id)// View detials
+{
+User Userregistration = new User();
+HttpClinent clinet - new HttpClient();
+client.BaseAddress = new Uri(" base address api url");
+HttpResponseMessage response =  awit clinent.GetAsync($" api/User{id}");
+if(respons.IsSuccessStatusCode)
+{
+var result = response.content.ReadAsStringAsync().Result;
+User=JsonConvert.DeserilationObject<User>(ressult); // JsonBear Package install
+}
+Return View(User);
+}
+
+[HttPGet]
+
+Public  Async  Task<IActionResult> create(User user)//  Add View create
+{
+
+Return View();
+}
+[HttpPost]
+Public  Async  Task<IActionResult> create(User user)
+{
+HttpClinent clinet - new HttpClient();
+client.BaseAddress = new Uri(" base address api url")
+var response =  awit clinent.PostAsync<user>(" api/User",user);
+if(respons.IsSuccessStatusCode)
+{
+ return RedirectTAction("Index");
+}
+Return View();
+}
+
+Public  Async  Task<IActionResult> delete(int id)// View delete
+{
+
+HttpClinent clinet - new HttpClient();
+client.BaseAddress = new Uri(" base address api url");
+HttpResponseMessage response =  awit clinent.DeleteAsync($" api/User{id}");
+if(respons.IsSuccessStatusCode)
+{
+return RedirectionTAction("Index');
+}
+Return View();
+}
+
+[HttPGet]
+Public  Async  Task<IActionResult> Edit(int id)//  Add View Edite
+{
+ User user = awit GetUserByid(id);
+Return View(user);
+}
+
+[HtpPost]
+Public  Async  Task<IActionResult> Edit(User user)
+{
+
+HttpClinent clinet - new HttpClient();
+client.BaseAddress = new Uri(" base address api url")
+var response =  awit clinent.PutAsync<user>($" api/User/{user.id}",user);
+if(respons.IsSuccessStatusCode)
+{
+ return RedirectTAction("Index");
+}
+Return View();
+
+}
+
+
+
+
+
+
+
+
+
+ 
